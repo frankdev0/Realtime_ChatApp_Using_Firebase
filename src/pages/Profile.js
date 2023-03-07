@@ -31,7 +31,7 @@ const Profile = () => {
           `avatar/${new Date().getTime()} - ${img.name}`
         );
         try {
-          if (user.avatarPath) {
+          if (user) {
             await deleteObject(ref(storage, user.avatarPath));
           }
           const snap = await uploadBytes(imgRef, img);
@@ -49,7 +49,7 @@ const Profile = () => {
       };
       uploadImg();
     }
-  }, [img]);
+  }, [img, user]);
 
   const deleteImage = async () => {
     try {
